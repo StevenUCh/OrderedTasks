@@ -1,0 +1,35 @@
+# Entorno virtual
+venv/
+env/
+
+# Archivos y carpetas generados por el entorno virtual
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite3
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+
+# Archivos de configuración de entornos de desarrollo
+*.env
+.env.*
+*.env
+
+# Archivos de configuración del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+
+# Archivos de caché
+*.cache
+
+# Archivos generados por el sistema de construcción
+build/
+dist/
+*.egg-info/
