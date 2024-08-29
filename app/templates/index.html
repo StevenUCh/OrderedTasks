@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>My Tasks</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.due_date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ 'Completed' if task.completed else 'Pending' }}</td>
+            <td>
+                <!-- Add edit/delete actions here -->
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('main.new_task') }}" class="btn btn-primary">Add Task</a>
+{% endblock %}

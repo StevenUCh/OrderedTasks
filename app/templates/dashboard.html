@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<canvas id="taskChart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('taskChart').getContext('2d');
+    var taskChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Task 1', 'Task 2', 'Task 3'],
+            datasets: [{
+                label: 'Tasks',
+                data: [12, 19, 3],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
