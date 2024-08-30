@@ -1,6 +1,8 @@
 # Entorno virtual
 venv/
 env/
+instance/
+migrations/
 
 # Archivos y carpetas generados por el entorno virtual
 *.pyc
