@@ -1,7 +1,10 @@
-Flask
-Flask-SQLAlchemy
-Flask-Migrate
-Flask-Login
-Flask-Mail
-Celery
-python-dotenv
+Flask==3.0.3
+Flask-Login==0.6.3
+Flask-Mail==0.10.0
+Flask-Migrate==4.0.7
+Flask-SQLAlchemy==3.1.1
+Flask-WTF==1.2.1
+SQLAlchemy==2.0.32
+WTForms==3.1.2
+python-dotenv==1.0.1
+gunicorn==23.0.0
