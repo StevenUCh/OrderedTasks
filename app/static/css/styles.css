@@ -27,3 +27,218 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+
+.nav-link {
+    color: #fff !important;
+    /* font-weight: bold; */
+    font-size: 16px !important;
+}
+
+.bg-gray{
+    background-color: #03254a;
+    color: #fff !important;
+}
+
+/* Cards */
+.card {
+    width: 250px;
+    height: 200px;
+    background: #86bcfa3e;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card::before {
+    content: "";
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    border-radius: 50%;
+    border: 35px solid #03254a2a;
+    transition: all .8s ease;
+    filter: blur(.5rem);
+  }
+  
+  .text {
+    flex-grow: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    color: #03254a;
+    font-weight: 900;
+    font-size: 1.2em;
+  }
+  
+  .subtitle {
+    font-size: .6em;
+    font-weight: 300;
+    color: #03254acd;
+  }
+  
+  .icons {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 250px;
+    overflow: hidden;
+}
+
+.btn {
+    border: none;
+    font-size: 20px !important;
+    width: 84px;
+    height: 35px;
+    background-color: #03254a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff !important;
+    border-radius: 0px !important;
+  }
+  
+  .svg-icon {
+    width: 25px;
+    height: 25px;
+    stroke: #263b7e;
+  }
+  
+  .btn:hover {
+    background-color: #fff;
+    color: #063c7a !important;
+  }
+  
+  .card:hover::before {
+    width: 140px;
+    height: 140px;
+    top: -30%;
+    left: 50%;
+    filter: blur(0rem);
+  }
+
+
+  .icon-new-card {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 200px;
+    font-size: 60px;
+    color: #03254a !important;
+    
+}
+
+.a-link-new-card {
+    color: #03254a !important;
+}
+
+
+.a-link-new-card:hover {
+    color:#0756ab !important;
+}
+
+.date-card {
+    font-size: 15px !important;
+}
+
+.status-card {
+    font-size: 13px !important;
+}
+
+
+.wave-group {
+    position: relative;
+  }
+  
+  .wave-group .input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+  }
+  
+  .wave-group .input:focus {
+    outline: none;
+  }
+  
+  .wave-group .label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    display: flex;
+  }
+  
+  .wave-group .label-char {
+    transition: 0.2s ease all;
+    transition-delay: calc(var(--index) * .05s);
+  }
+  
+  .wave-group .input:focus ~ label .label-char,
+  .wave-group .input:valid ~ label .label-char {
+    transform: translateY(-20px);
+    font-size: 16px;
+    color: #03254a;
+  }
+  
+  .wave-group .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  
+  .wave-group .bar:before,.wave-group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #03254a;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+  
+  .wave-group .bar:before {
+    left: 50%;
+  }
+  
+  .wave-group .bar:after {
+    right: 50%;
+  }
+  
+  .wave-group .input:focus ~ .bar:before,
+  .wave-group .input:focus ~ .bar:after {
+    width: 50%;
+  }
+  
+  
+  
+  a:focus, a:hover {
+    color:#0756ab !important;
+  }
+
+  .form-control{
+    border-radius: 0px !important;
+  }
+
+/* Cuando el input está en focus o es válido */
+.wave-group .input:focus::placeholder,
+.wave-group .input:valid::placeholder {
+    color: #acacacd2; 
+}
+
+
+.change-color::placeholder {
+    color: #ffffff00; 
+    opacity: 1; 
+}  

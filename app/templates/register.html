@@ -1,29 +1,92 @@
-{% extends 'layout.html' %}
+{% extends 'layout_login.html' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registro{% endblock %}
 
 {% block content %}
-<h1>Register</h1>
-<form method="POST" action="{{ url_for('main.register') }}">
-    {{ form.hidden_tag() }}
-    <div class="mb-3">
-        {{ form.username.label(class="form-label") }}
-        {{ form.username(class="form-control") }}
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 login-section-wrapper">
+                <div class="brand-wrapper">
+                    <img src="{{ url_for('static', filename='img/black_logo.png') }}" alt="logo" class="logo">
+                    <span>JECODE</span> 
+                </div>
+                <div class="login-wrapper my-auto">
+                    <h1 class="login-title">Registro</h1>
+
+                    <form method="POST" action="{{ url_for('main.register') }}">
+                        {{ form.hidden_tag() }}
+
+                        <div class="form-group mb-3">
+                            <div class="wave-group">
+                                {{ form.username(class="input", required=True, autocomplete="off") }}
+                                <span class="bar"></span>
+                                <label class="label">
+                                {% for char in "Usuario" %}
+                                    <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                                {% endfor %}
+                                </label>                                      
+                            </div>                              
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="wave-group">
+                                {{ form.email(class="input form-control p-1 pt-3", required=True, autocomplete="off") }}
+                                <span class="bar"></span>
+                                <label class="label">
+                                {% for char in "Correo" %}
+                                    <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                                {% endfor %}
+                                </label>                                      
+                            </div> 
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="wave-group">
+                                {{ form.password(class="input form-control p-1 pt-3", required=True, autocomplete="off") }}
+                                <span class="bar"></span>
+                                <label class="label">
+                                {% for char in "Contraseña" %}
+                                    <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                                {% endfor %}
+                                </label>                                      
+                            </div> 
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="wave-group">
+                                {{ form.confirm_password(class="input form-control p-1 pt-3", required=True, autocomplete="off") }}
+                                <span class="bar"></span>
+                                <label class="label">
+                                {% for char in "Confirmación - Contraseña" %}
+                                    <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                                {% endfor %}
+                                </label>                                      
+                            </div> 
+                        </div>
+                        <button type="submit" class="button button-primary mb-4">
+                            Registrar
+                        </button>
+                    </form>
+                    <p class="login-wrapper-footer-text">¿Ya tienes usuario? <a href="{{ url_for('main.login') }}" class="text-reset">Acceder</a></p>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    <div class="flashes">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+                <img src="{{ url_for('static', filename='img/login4.jpg') }}" alt="login image" class="login-img">
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        {{ form.email.label(class="form-label") }}
-        {{ form.email(class="form-control") }}
-    </div>
-    <div class="mb-3">
-        {{ form.password.label(class="form-label") }}
-        {{ form.password(class="form-control") }}
-    </div>
-    <div class="mb-3">
-        {{ form.confirm_password.label(class="form-label") }}
-        {{ form.confirm_password(class="form-control") }}
-    </div>
-    <div class="mb-3">
-        {{ form.submit(class="btn btn-primary") }}
-    </div>
-</form>
+</main>
+
 {% endblock %}
+
+
+

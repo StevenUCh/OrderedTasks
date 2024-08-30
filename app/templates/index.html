@@ -1,30 +1,113 @@
 {% extends 'layout.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Inicio{% endblock %}
 
 {% block content %}
-<h1>My Tasks</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Due Date</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for task in tasks %}
-        <tr>
-            <td>{{ task.title }}</td>
-            <td>{{ task.due_date.strftime('%Y-%m-%d') }}</td>
-            <td>{{ 'Completed' if task.completed else 'Pending' }}</td>
-            <td>
-                <!-- Add edit/delete actions here -->
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<a href="{{ url_for('main.new_task') }}" class="btn btn-primary">Add Task</a>
+
+<h1 class="mb-4">Mis tareas</h1>
+<div class="row card-container">
+
+    {% for task in tasks %}
+    <div class="col-12 col-md-3 mb-3 d-flex justify-content-center align-items-center">
+        <div class="card">
+            <div class="text">
+                <span class="title-card">{{ task.title }}</span>
+                <p class="subtitle date-card m-0">{{ task.due_date.strftime('%Y-%m-%d') }}</p>
+                <p class="subtitle status-card">{{ task.status }}</p>
+            </div>
+            <div class="icons">
+                <a class="btn" href="{{ url_for('main.task_detail', task_id=task.id) }}">
+                    <span class="mdi mdi-eye-outline svg-icon"></span>
+                </a>
+                <a class="btn" href="{{ url_for('main.task_edit', task_id=task.id) }}">
+                    <span class="svg-icon mdi mdi-pencil"></span>
+                </a>
+                <a class="btn" href="{{ url_for('main.task_delete', task_id=task.id) }}">
+                    <span class="svg-icon mdi mdi-delete"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="col-12 col-md-3 mb-3 d-flex justify-content-center align-items-center">
+        <div class="card">
+            <div class="row">
+                <div class="col-12 text-center icon-new-card ">
+                    <a class="a-link-new-card mdi mdi-plus-circle" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Tarea</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form method="POST" action="{{ url_for('main.new_task') }}">
+            <div class="modal-body">
+                {{ form_task.hidden_tag() }}
+                <div class="form-group mb-3">
+                    <div class="wave-group">
+                        {{ form_task.title(class="input form-control p-1 pt-3", required=True, autocomplete="off") }}
+                        <span class="bar"></span>
+                        <label class="label">
+                        {% for char in "Titulo" %}
+                            <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                        {% endfor %}
+                        </label>                                      
+                    </div> 
+
+                </div>
+                <div class="form-group mb-3">
+                    <div class="wave-group">
+                        {{ form_task.description(class="input form-control p-1 pt-3", required=True, autocomplete="off") }}
+                        <span class="bar"></span>
+                        <label class="label">
+                        {% for char in "Descripción" %}
+                            <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                        {% endfor %}
+                        </label>                                      
+                    </div> 
+                </div>
+                <div class="form-group mb-3">
+                    <div class="wave-group">
+                        {{ form_task.status(class="input form-control p-1 pt-3", required=True, autocomplete="off") }}
+                        <span class="bar"></span>
+                        <label class="label">
+                        {% for char in "Estado" %}
+                            <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                        {% endfor %}
+                        </label>                                      
+                    </div> 
+                </div>
+                <div class="form-group mb-3">
+
+                    <div class="wave-group">
+                        {{ form_task.due_date(class="input form-control p-1 pt-3 change-color", required=True, autocomplete="off", placeholder="YYYY-MM-DD HH:MM:SS") }}
+                        <span class="bar"></span>
+                        <label class="label">
+                        {% for char in "Vencimiento" %}
+                            <span class="label-char" style="--index: {{ loop.index0 }}">{{ char }}</span>
+                        {% endfor %}
+                        </label>                                      
+                    </div> 
+
+                </div>  
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button button-secundary me-3" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="button button-primary">Crear</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
 {% endblock %}

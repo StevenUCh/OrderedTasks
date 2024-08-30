@@ -36,5 +36,6 @@ class TaskForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     description = TextAreaField('Description')
     due_date = DateTimeField('Due Date', format='%Y-%m-%d %H:%M:%S', validators=[DataRequired()])
+    status = StringField('Status', validators=[DataRequired()])
     submit = SubmitField('Submit')
 

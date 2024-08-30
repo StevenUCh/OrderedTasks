@@ -1,12 +1,11 @@
-<!-- task_form.html -->
 {% extends 'layout.html' %}
 
-{% block title %}Editar{% endblock %}
+{% block title %}Detalle{% endblock %}
 
 {% block content %}
-<h1 class="mb-4" >Editar Tarea</h1>
-
-<form method="POST">
+  <h1 class="mb-4">Detalle de tarea</h1>
+  
+  <form method="POST">
     {{ form.hidden_tag() }}
     <div class="form-group mb-3">
         <div class="wave-group">
@@ -55,8 +54,9 @@
         </div> 
 
     </div>  
-    <button type="submit" class="button button-primary mt-2">Actualizar</button>
-</form>
+  </form>
+  <button type="button" class="button button-primary mt-2" onclick="window.location.href='{{ url_for('main.index') }}'">Regresar</button>
 
+  
 
 {% endblock %}
